@@ -1,0 +1,46 @@
+package main
+
+import (
+	"log"
+	"os"
+
+	"github.com/dronezzzko/go-multilang-api/internal/api"
+	_ "github.com/dronezzzko/go-multilang-api/internal/translation"
+
+	"github.com/spf13/pflag"
+)
+
+func main() {
+	logger := log.New(os.Stderr, "api ", log.LstdFlags)
+
+	fs := pflag.NewFlagSet("default", pflag.ContinueOnError)
+	fs.Int("port", 8080, "HTTP port to bind to")
+
+	err := fs.Parse(os.Args[1:])
+	switch {
+	case err == pflag.ErrHelp:
+		os.Exit(0)
+	case err != nil:
+		logger.Printf("parse arguments: %s\n", err.Error())
+		os.Exit(2)
+	}
+
+	err = run(fs, logger)
+	if err != nil {
+		logger.Fatalln(err)
+	}
+}
+
+func run(fs *pflag.FlagSet, logger *log.Logger) error {
+	apiPort, err := fs.GetInt("port")
+	if err != nil {
+		return err
+	}
+
+	server, err := api.NewServer(apiPort, logger)
+	if err != nil {
+		return err
+	}
+
+	return server.ListenAndServe()
+}

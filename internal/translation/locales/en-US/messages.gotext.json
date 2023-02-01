@@ -1,0 +1,42 @@
+{
+    "language": "en-US",
+    "messages": [
+        {
+            "id": "This song has already been sung {SungTimes} times!",
+            "message": "This song has already been sung {SungTimes} times!",
+            "translation": {
+                "select": {
+                    "feature": "plural",
+                    "arg": "SungTimes",
+                    "cases": {
+                        "=0": {
+                            "msg": "This song is gonna be sung first time!"
+                        },
+                        "one": {
+                            "msg": "This song has already been sung {SungTimes} time!"
+                        },
+                        "other": {
+                            "msg": "This song has already been sung {SungTimes} times!"
+                        }
+                    }
+                }
+            },
+            "placeholders": [
+                {
+                    "id": "SungTimes",
+                    "string": "%[1]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 1,
+                    "expr": "sungTimes"
+                }
+            ],
+            "fuzzy": true
+        },
+        {
+            "id": "ten-green-bottles-song",
+            "message": "ten-green-bottles-song",
+            "translation": "10 green bottles standing on a wall,\nAnd if 1 green bottle should accidentally fall,\nThere’ll be 9 green bottles standing on a wall."
+        }
+    ]
+}

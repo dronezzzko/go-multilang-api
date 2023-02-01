@@ -1,0 +1,41 @@
+{
+    "language": "fr-FR",
+    "messages": [
+        {
+            "id": "This song has already been sung {SungTimes} times!",
+            "message": "This song has already been sung {SungTimes} times!",
+            "translation": {
+                "select": {
+                    "feature": "plural",
+                    "arg": "SungTimes",
+                    "cases": {
+                        "=0": {
+                            "msg": "Cette chanson va être chantée pour la première fois !"
+                        },
+                        "one": {
+                            "msg": "Cette chanson a déjà été chantée une fois !"
+                        },
+                        "other": {
+                            "msg": "Cette chanson a déjà été chantée {SungTimes} fois !"
+                        }
+                    }
+                }
+            },
+            "placeholders": [
+                {
+                    "id": "SungTimes",
+                    "string": "%[1]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 1,
+                    "expr": "sungTimes"
+                }
+            ]
+        },
+        {
+            "id": "ten-green-bottles-song",
+            "message": "ten-green-bottles-song",
+            "translation": "10 bouteilles vertes suspendues au mur,\nEt si 9 bouteilles vertes venait à tomber,\nIl n’y aurait plus que 9 bouteilles vertes suspendues au mur."
+        }
+    ]
+}
