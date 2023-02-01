@@ -2,7 +2,8 @@
 
 ### Description
 A demo API that demonstrates how to manage multiple languages in your service.
-The project also demonstrates how to deal with pluralization. 
+The project also shows how to deal with pluralization. 
+
 Built using ``gotext``.
 
 There are two supported languages in the repo: ```en-US```, ```fr-FR```.
