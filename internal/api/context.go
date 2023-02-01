@@ -13,7 +13,7 @@ type LanguageContext struct {
 func (c *LanguageContext) Printer() *message.Printer {
 	langH := c.Request().Header.Get("Accept-Language")
 
-	p, ok := printer.Make(c.Request().Header.Get("Accept-Language"))
+	p, ok := printer.Make(langH)
 	if !ok {
 		c.Logger().Errorf("parse Accept-Language header: unsupported language %q", langH)
 	}
