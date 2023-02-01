@@ -1,7 +1,7 @@
 # go-multilang-api
 
 ### Description
-A demo API that demonstrates how to manage multiple languages in your service.
+A simple API that demonstrates how to manage multiple languages in your service.
 The project also shows how to deal with pluralization. 
 
 Built using ``gotext``.
