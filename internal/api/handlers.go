@@ -16,7 +16,10 @@ func Song(c echo.Context) error {
 		sungTimes++
 	}()
 
-	lc := c.(*LanguageContext)
+	lc, ok := c.(*LanguageContext)
+	if !ok {
+		return fmt.Errorf("LanguageContext type assertion: invalid context: %v", c)
+	}
 	p := lc.Printer()
 
 	// Using text in source language as a key.

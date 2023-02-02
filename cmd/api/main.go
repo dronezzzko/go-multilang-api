@@ -6,23 +6,30 @@ import (
 
 	"github.com/dronezzzko/go-multilang-api/internal/api"
 	_ "github.com/dronezzzko/go-multilang-api/internal/translation"
-
 	"github.com/spf13/pflag"
 )
+
+const (
+	exitCodeNoErr       = 0
+	exitCodeInvalidArgs = 2
+)
+
+const defaultPort = 8080
 
 func main() {
 	logger := log.New(os.Stderr, "api ", log.LstdFlags)
 
 	fs := pflag.NewFlagSet("default", pflag.ContinueOnError)
-	fs.Int("port", 8080, "HTTP port to bind to")
+	fs.Int("port", defaultPort, "HTTP port to bind to")
 
 	err := fs.Parse(os.Args[1:])
+
 	switch {
 	case err == pflag.ErrHelp:
-		os.Exit(0)
+		os.Exit(exitCodeNoErr)
 	case err != nil:
 		logger.Printf("parse arguments: %s\n", err.Error())
-		os.Exit(2)
+		os.Exit(exitCodeInvalidArgs)
 	}
 
 	err = run(fs, logger)

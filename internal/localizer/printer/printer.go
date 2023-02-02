@@ -3,10 +3,9 @@ package printer
 import (
 	"strings"
 
+	_ "github.com/dronezzzko/go-multilang-api/internal/translation"
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"
-
-	_ "github.com/dronezzzko/go-multilang-api/internal/translation"
 )
 
 const defaultLocaleID = "en-US"

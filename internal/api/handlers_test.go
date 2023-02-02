@@ -1,16 +1,16 @@
-package api
+package api_test
 
 import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
 
+	"github.com/dronezzzko/go-multilang-api/internal/api"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestSong(t *testing.T) {
-
 	testCases := []struct {
 		name       string
 		langHeader string
@@ -65,7 +65,7 @@ Cette chanson a déjà été chantée 3 fois !
 			req := httptest.NewRequest(http.MethodGet, "/", nil)
 			req.Header.Add("Accept-Language", tc.langHeader)
 			rec := httptest.NewRecorder()
-			assert.NoError(t, Song(&LanguageContext{e.NewContext(req, rec)}))
+			assert.NoError(t, api.Song(&api.LanguageContext{Context: e.NewContext(req, rec)}))
 			assert.Contains(t, rec.Body.String(), tc.response)
 		})
 	}
