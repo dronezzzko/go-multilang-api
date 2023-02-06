@@ -1,3 +1,5 @@
+[![Go](https://github.com/dronezzzko/go-multilang-api/actions/workflows/linters.yml/badge.svg)](https://github.com/dronezzzko/go-multilang-api/actions/workflows/linters.yml)
+
 # go-multilang-api
 
 ### Description
