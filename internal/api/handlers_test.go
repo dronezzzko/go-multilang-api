@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/dronezzzko/go-multilang-api/internal/api"
+	_ "github.com/dronezzzko/go-multilang-api/internal/translation"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 )

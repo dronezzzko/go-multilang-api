@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"log"
 	"os"
 
@@ -25,7 +26,7 @@ func main() {
 	err := fs.Parse(os.Args[1:])
 
 	switch {
-	case err == pflag.ErrHelp:
+	case errors.Is(err, pflag.ErrHelp):
 		os.Exit(exitCodeNoErr)
 	case err != nil:
 		logger.Printf("parse arguments: %s\n", err.Error())

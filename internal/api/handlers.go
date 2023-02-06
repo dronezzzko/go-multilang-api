@@ -11,25 +11,26 @@ import (
 // See for details: https://pkg.go.dev/golang.org/x/text/feature/plural
 var sungTimes int
 
-func Song(c echo.Context) error {
+func Song(ctx echo.Context) error {
 	defer func() {
 		sungTimes++
 	}()
 
-	lc, ok := c.(*LanguageContext)
+	lc, ok := ctx.(*LanguageContext)
 	if !ok {
-		return fmt.Errorf("LanguageContext type assertion: invalid context: %v", c)
+		return fmt.Errorf("LanguageContext type assertion: invalid context: %v", ctx)
 	}
-	p := lc.Printer()
+
+	printer := lc.Printer()
 
 	// Using text in source language as a key.
-	stat := p.Sprintf("This song has already been sung %d times!", sungTimes)
+	stat := printer.Sprintf("This song has already been sung %d times!", sungTimes)
 
 	// Using ID as a key. More convenient way.
 	// Easy to read, search and any text change doesn't require changing the ID.
-	song := p.Sprintf("ten-green-bottles-song")
+	song := printer.Sprintf("ten-green-bottles-song")
 
-	return c.String(
+	return ctx.String(
 		http.StatusOK,
 		fmt.Sprintf("%s\n\n%s\n", song, stat),
 	)

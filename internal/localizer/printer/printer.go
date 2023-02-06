@@ -3,7 +3,6 @@ package printer
 import (
 	"strings"
 
-	_ "github.com/dronezzzko/go-multilang-api/internal/translation"
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"
 )
@@ -24,8 +23,8 @@ var locales = map[internalLocaleID]localeID{
 
 // Make instantiates a new message.Printer for provided locale ID.
 // If ID is not supported a message.Printer for default locale (defaultLocaleID) will be returned.
-func Make(ID string) (*message.Printer, bool) {
-	normalizedID := internalLocaleID(strings.ToLower(ID))
+func Make(id string) (*message.Printer, bool) {
+	normalizedID := internalLocaleID(strings.ToLower(id))
 	if langID, ok := locales[normalizedID]; ok {
 		return message.NewPrinter(language.MustParse(string(langID))), true
 	}
